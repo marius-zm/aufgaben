@@ -20,3 +20,7 @@ import random
 
 number = int(random.random() * 100)
 print(number)
+
+# for loop
+for i in range(10):
+    print(i)
