@@ -15,3 +15,8 @@ data_dict = {1: "Marius", "blah": "2"}
 
 print(data_list)
 print(data_dict)
+
+import random
+
+number = int(random.random() * 100)
+print(number)
