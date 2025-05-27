@@ -3,20 +3,23 @@ import random
 random_number = int(random.random() * 100) + 1
 
 not_won = True
+guesses = 0
 
 print(
     "Errate die richtige Zahl zwischen 1 und 100. Ich sage dir, ob deine Zahl höher oder niedriger ist als die gesuchte Zufallszahl."
 )
+
 while not_won:
     try:
         user_input = input("Gebe eine ganze Zahl von 1 - 100 ein: ").lower()
+        guesses += 1
         if user_input == "exit":
             break
         else:
             user_input = int(user_input)
         if user_input == random_number:
             not_won == False
-            print("Richtig, du hast gewonnen!")
+            print(f"Richtig, du hast gewonnen! Du brauchtest dafür {guesses} Versuche.")
             break
         else:
             if user_input < random_number:
