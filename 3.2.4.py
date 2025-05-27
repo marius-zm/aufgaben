@@ -162,7 +162,7 @@ discount()
 
 def traffic_light():
     user_input = input(
-        "Gib eine Farbe eine der drei Farben ein (grün, gelb oder rot): "
+        "Gib eine der drei Farben ein (grün, gelb oder rot): "
     ).lower()
 
     if user_input == "grün":
