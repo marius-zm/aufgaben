@@ -2,7 +2,7 @@ running = True
 users_list = []
 
 print(
-    "Gib mir deine Zahlen und ich mache etwas."
+    "Gib mir deine Zahlen und ich schreibe sie in eine Liste, sortiere diese und zeige dir nützliche Informationen über deine Zahlen. Schreibe 'stop', um das Sammeln der Zahlen zu beenden und die Informationen anzuzeigen."
 )
 
 while running:
@@ -15,11 +15,11 @@ while running:
 
         for i in users_list:
             sum += i
-            if (i > highest_number):
+            if i > highest_number:
                 highest_number = i
             if i < lowest_number:
                 lowest_number = i
-            
+
         print("Hier die Ergebnisse:")
         print(f"Höchste Zahl: {highest_number}")
         print(f"Niedrigste Zahl: {lowest_number}")
@@ -34,4 +34,4 @@ while running:
             user_input = int(user_input)
             users_list.append(user_input)
         except:
-            print("Das war keine ganze Zahl. Gebe eine Zahl von 1 - 100 ein.")
+            print("Das war keine ganze Zahl. Gebe eine beliebige Zahl ein.")
