@@ -13,18 +13,22 @@ while not_won:
     try:
         user_input = input("Gebe eine ganze Zahl von 1 - 100 ein: ").lower()
         guesses += 1
+
         if user_input == "exit":
             break
         else:
             user_input = int(user_input)
-        if user_input == random_number:
-            not_won == False
-            print(f"Richtig, du hast gewonnen! Du brauchtest dafür {guesses} Versuche.")
-            break
-        else:
-            if user_input < random_number:
-                print(f"Deine Zahl ist niedriger. Versuche es erneut.")
-            if user_input > random_number:
-                print(f"Deine Zahl ist höher. Versuche es erneut.")
+
     except:
         print("Das war keine ganze Zahl. Gebe eine Zahl von 1 - 100 ein.")
+
+    if user_input == random_number:
+        not_won == False
+        print(f"Richtig, du hast gewonnen! Du brauchtest dafür {guesses} Versuche.")
+        break
+    
+    else:
+        if user_input < random_number:
+                print(f"Deine Zahl ist niedriger. Versuche es erneut.")
+        if user_input > random_number:
+                print(f"Deine Zahl ist höher. Versuche es erneut.")
