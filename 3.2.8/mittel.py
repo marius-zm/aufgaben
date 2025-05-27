@@ -15,3 +15,6 @@ print_average(numbers)
 # list reversed
 numbers.reverse()
 print(numbers)
+
+# oder
+print(numbers[::-1])
