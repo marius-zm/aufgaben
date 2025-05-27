@@ -1,7 +1,3 @@
-import random
-
-random_number = int(random.random() * 100) + 1
-
 running = True
 users_list = []
 
@@ -39,19 +35,3 @@ while running:
             users_list.append(user_input)
         except:
             print("Das war keine ganze Zahl. Gebe eine Zahl von 1 - 100 ein.")
-
-    
-
-    # if user_input == random_number:
-    #     not_won == False
-    #     print(f"Richtig, du hast gewonnen! Du brauchtest dafür {guesses} Versuche.")
-    #     break
-
-    # else:
-    #     if user_input > 100 or user_input < 1:
-    #         print("Die Zahl muss zwischen 1 und 100 liegen.")
-    #         continue
-    #     if user_input < random_number:
-    #         print(f"Deine Zahl ist niedriger. Versuche es erneut.")
-    #     if user_input > random_number:
-    #         print(f"Deine Zahl ist höher. Versuche es erneut.")
