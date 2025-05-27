@@ -26,9 +26,12 @@ while not_won:
         not_won == False
         print(f"Richtig, du hast gewonnen! Du brauchtest dafür {guesses} Versuche.")
         break
-    
+
     else:
+        if user_input > 100 or user_input < 1:
+            print("Die Zahl muss zwischen 1 und 100 liegen.")
+            continue
         if user_input < random_number:
-                print(f"Deine Zahl ist niedriger. Versuche es erneut.")
+            print(f"Deine Zahl ist niedriger. Versuche es erneut.")
         if user_input > random_number:
-                print(f"Deine Zahl ist höher. Versuche es erneut.")
+            print(f"Deine Zahl ist höher. Versuche es erneut.")
