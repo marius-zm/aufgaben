@@ -6,7 +6,7 @@ not_won = True
 guesses = 0
 
 print(
-    "Errate die richtige Zahl zwischen 1 und 100. Ich sage dir, ob deine Zahl höher oder niedriger ist als die gesuchte Zufallszahl."
+    "Errate die richtige Zahl zwischen 1 und 100. Ich sage dir, ob deine Zahl höher oder niedriger ist als die gesuchte Zufallszahl. Schreibe 'exit', um das Spiel zu beenden."
 )
 
 while not_won:
