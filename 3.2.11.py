@@ -6,9 +6,14 @@ print(
 )
 
 while running:
-    user_input = input("Gebe eine beliebige ganze Zahl ein: ").lower()
+    user_input = input("Gebe eine beliebige Zahl ein: ").lower()
 
     if user_input == "stop":
+        if len(users_list) == 0:
+            print("Deine Liste ist Leer. Ich habe nichts für dich.")
+            running == False
+            break
+        
         sum = 0
         highest_number = users_list[0]
         lowest_number = users_list[0]
@@ -31,7 +36,7 @@ while running:
 
     else:
         try:
-            user_input = int(user_input)
+            user_input = float(user_input)
             users_list.append(user_input)
         except:
-            print("Das war keine ganze Zahl. Gebe eine beliebige Zahl ein.")
+            print("Das war keine Zahl. Gebe eine beliebige Zahl ein.")
