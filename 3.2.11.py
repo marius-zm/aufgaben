@@ -6,14 +6,14 @@ print(
 )
 
 while running:
-    user_input = input("Gebe eine beliebige Zahl ein: ").lower()
+    user_input = input("Gebe eine beliebige ganze Zahl ein: ").lower()
 
     if user_input == "stop":
         if len(users_list) == 0:
             print("Deine Liste ist Leer. Ich habe nichts für dich.")
             running == False
             break
-        
+
         sum = 0
         highest_number = users_list[0]
         lowest_number = users_list[0]
@@ -29,14 +29,14 @@ while running:
         print(f"Höchste Zahl: {highest_number}")
         print(f"Niedrigste Zahl: {lowest_number}")
         print(f"Durchschnitt: {round((sum / len(users_list)), 2)}")
-        users_list.sort()
-        print(f"Sortierte Liste: {users_list}")
+        users_list_sorted = sorted(users_list)
+        print(f"Sortierte Liste: {users_list_sorted}")
 
         running = False
 
     else:
         try:
-            user_input = float(user_input)
+            user_input = int(user_input)
             users_list.append(user_input)
         except:
-            print("Das war keine Zahl. Gebe eine beliebige Zahl ein.")
+            print("Das war keine ganze Zahl. Gebe eine ganze Zahl ein.")
