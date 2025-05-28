@@ -60,7 +60,6 @@ def calc_conversion(type_of_conversion):
         case "Kelvin":
             in_celsius = kelvin_zu_celsius(value)
             in_fahrenheit = kelvin_zu_fahrenheit(value)
-            print("\n --- Ergebnisse --- ")
             result_table.add_row(f"{value}K", f"{in_celsius}°C")
             result_table.add_row(f"{value}K", f"{in_fahrenheit}°F")
             
