@@ -1,8 +1,8 @@
 class BankAccount:
-    def __init__(self, owner) -> None:
+    def __init__(self, owner, balance = 0.0, limit = -100) -> None:
         self.owner = owner
-        self.balance = 0
-        self.limit = -100
+        self.balance = balance
+        self.limit = limit
 
     def pay_in(self, amount):
         if amount <= 0:
