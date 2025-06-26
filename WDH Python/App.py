@@ -11,14 +11,14 @@ class App(tk.Tk):
         super().__init__(master)
 
         self.width = 800
-        self.height = 600
+        self.height = 400
         self.geometry(f"{self.width}x{self.height}")
 
         self.root_path = self.get_root_path()
 
         # Inputframe
         self.input_frame = Input(self)
-        self.input_frame.pack(fill="x")
+        self.input_frame.pack(fill="both", expand=True)
 
         init_style()
 

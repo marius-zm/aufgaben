@@ -5,8 +5,8 @@ import random, os, json
 
 
 class Input(ttk.Frame):
-    def __init__(self, master):
-        super().__init__(master)
+    def __init__(self, master, **kwargs):
+        super().__init__(master, **kwargs)
         self.master = master
 
         self.expenditures = []
@@ -17,58 +17,86 @@ class Input(ttk.Frame):
         )
 
         self.overview_label = ttk.Label(self, textvariable=self.overview_state)
-        self.overview_label.pack()
+        self.overview_label.pack(anchor="w", pady=4, padx=4)
+
+        # Topframe
+        self.top_frame = ttk.Frame(self)
+        self.top_frame.pack()
 
         # Userinputframe
-        self.input_frame = ttk.Frame(self)
-        self.input_frame.pack()
+        self.input_frame = ttk.Frame(self.top_frame)
+        self.input_frame.pack(side="left")
 
         # Amount
-        self.amount_frame = ttk.Frame(self.input_frame)
-        self.amount_frame.pack()
+        self.amount_frame = ttk.Frame(self.input_frame, padding=4)
+        self.amount_frame.pack(expand=True, fill="x")
         self.amount_label = ttk.Label(self.amount_frame, text="Amount: ")
         self.amount_label.pack(side="left")
         self.amount_input = ttk.Entry(self.amount_frame)
         self.amount_input.pack(side="right")
 
         # Description
-        self.description_frame = ttk.Frame(self.input_frame)
-        self.description_frame.pack()
+        self.description_frame = ttk.Frame(self.input_frame, padding=4)
+        self.description_frame.pack(expand=True, fill="x")
         self.description_label = ttk.Label(self.description_frame, text="Description: ")
         self.description_label.pack(side="left")
         self.description_input = ttk.Entry(self.description_frame)
         self.description_input.pack(side="right")
 
         # Category
-        self.category_frame = ttk.Frame(self.input_frame)
-        self.category_frame.pack()
+        self.category_frame = ttk.Frame(self.input_frame, padding=4)
+        self.category_frame.pack(expand=True, fill="x")
         self.category_label = ttk.Label(self.category_frame, text="Category: ")
         self.category_label.pack(side="left")
         self.category_input = ttk.Entry(self.category_frame)
         self.category_input.pack(side="right")
 
         # Buttons
+        self.button_frame = ttk.Frame(self.top_frame, padding=(32, 0, 0, 0))
+        self.button_frame.pack(side="right")
         self.button_expenditures = ttk.Button(
-            self, text="Add as expenditure", command=self.add_expenditure
+            self.button_frame,
+            text="Add as expenditure",
+            command=self.add_expenditure,
+            cursor="hand2",
         )
-        self.button_expenditures.pack()
-
+        self.button_expenditures.pack(expand=True, fill="x", padx=4, pady=4)
         self.button_income = ttk.Button(
-            self, text="Add as income", command=self.add_income
+            self.button_frame,
+            text="Add as income",
+            command=self.add_income,
+            cursor="hand2",
         )
-        self.button_income.pack()
+        self.button_income.pack(expand=True, fill="x", padx=4, pady=4)
+
+        # Bottomframe
+        self.bottom_frame = ttk.Frame(self)
+        self.bottom_frame.pack()
 
         # Transactions
-        self.transactions_frame = ttk.Frame(self)
-        self.transactions_frame.pack(expand=True, fill="x")
+        self.transactions_frame = ttk.Frame(self.bottom_frame)
+        self.transactions_frame.pack(expand=True, fill="x", padx=4, pady=4)
 
-        self.listbox = tk.Listbox(self.transactions_frame)
-        self.listbox.pack(fill=tk.X, expand=True, padx=4, pady=4, ipadx=4, ipady=4)
+        self.scrollbar = tk.Scrollbar(self.transactions_frame, orient=tk.VERTICAL)
+        self.scrollbar.pack(side=tk.RIGHT, fill=tk.Y)
+
+        # Create the Listbox and link both scrollbars
+        self.listbox = tk.Listbox(
+            self.transactions_frame,
+            yscrollcommand=self.scrollbar.set,  # Link vertical scrollbar
+            width=80,
+            font=("16"),
+            justify="center",
+        )
+        self.listbox.pack(fill=tk.X, expand=True, padx=4, pady=4)
 
         self.create_txt = ttk.Button(
-            self, text="Save transactions", command=self.create_txt_file
+            self.bottom_frame,
+            text="Save",
+            command=self.create_txt_file,
+            cursor="hand2",
         )
-        self.create_txt.pack()
+        self.create_txt.pack(pady=4)
 
     def create_txt_file(self):
         # Construct the full path to the file in the project root
@@ -98,7 +126,7 @@ class Input(ttk.Frame):
 
         self.listbox.insert(
             tk.END,
-            f"{"Expenditure" if transaction[0] == "Expenditures" else "Income"}: {new_item['value']}, Category: {new_item['category']}, Date: {new_item['timestamp']}",
+            f"{"Expenditure" if transaction[0] == "Expenditures" else "Income"}: {new_item['value']}, Description: {new_item['description']}, Category: {new_item['category']}, Date: {new_item['timestamp']}",
         )
 
     def add_expenditure(self):
